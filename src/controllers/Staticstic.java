@@ -74,7 +74,7 @@ public class Staticstic {
             }
         }
             
-        BufferedImage hist = new BufferedImage(256, 231, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage hist = new BufferedImage(256, 131, BufferedImage.TYPE_INT_ARGB);
         int maxVal = count[0];
         Color redColor = new Color(255,0,0);
         Color greenColor = new Color(0,255,0);
@@ -83,19 +83,19 @@ public class Staticstic {
         for (int i = 1; i < count.length; i++) {
             if(maxVal < count[i]) maxVal = count[i];
         }
-        double m = 200.0 / maxVal;
+        double m = 100.0 / maxVal;
         
         for (int i = 0; i < 256; i++) {
             for (int j = 0; j < m * count[i]; j++) {
                 switch (c) {
                     case 'R':
-                        hist.setRGB(i, 200 - j, redColor.getRGB());
+                        hist.setRGB(i, 100 - j, redColor.getRGB());
                         break;
                     case 'G':
-                        hist.setRGB(i, 200 - j, greenColor.getRGB());
+                        hist.setRGB(i, 100 - j, greenColor.getRGB());
                         break;
                     case 'B':
-                        hist.setRGB(i, 200 - j, blueColor.getRGB());
+                        hist.setRGB(i, 100 - j, blueColor.getRGB());
                         break;
                 }
             }
@@ -103,13 +103,13 @@ public class Staticstic {
             for (int j = 0; j < 20; j++) {          
                 switch (c) {
                     case 'R':
-                        hist.setRGB(i, 210 + j, new Color(255, 255 - i, 255 -i).getRGB());
+                        hist.setRGB(i, 110 + j, new Color(255, 255 - i, 255 -i).getRGB());
                         break;
                     case 'G':
-                        hist.setRGB(i, 210 + j, new Color(255 -i, 255, 255 -i).getRGB());
+                        hist.setRGB(i, 110 + j, new Color(255 -i, 255, 255 -i).getRGB());
                         break;
                     case 'B':
-                        hist.setRGB(i, 210 + j, new Color(255 - i, 255 - i, 255).getRGB());
+                        hist.setRGB(i, 110 + j, new Color(255 - i, 255 - i, 255).getRGB());
                         break;
                 }
                 

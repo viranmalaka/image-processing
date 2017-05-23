@@ -32,7 +32,7 @@ public class ImageViewer extends javax.swing.JInternalFrame {
         BufferedImage image = UndoImage.getCurrent().getImg();
         this.image = image;
         this.lblImage.setIcon(new ImageIcon(image));
-        this.setSize(image.getWidth(), image.getHeight());
+        this.setSize(image.getWidth() + 100, image.getHeight() + 100);
     }
     
     /**
