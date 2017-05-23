@@ -29,10 +29,13 @@ public class ImageViewer extends javax.swing.JInternalFrame {
     }
 
     public void refreshImage(){
-        BufferedImage image = UndoImage.getCurrent().getImg();
-        this.image = image;
-        this.lblImage.setIcon(new ImageIcon(image));
-        this.setSize(image.getWidth() + 100, image.getHeight() + 100);
+        try {
+            BufferedImage image = UndoImage.getCurrent().getImg();
+            this.image = image;
+            this.lblImage.setIcon(new ImageIcon(image));
+            this.setSize(image.getWidth() + 100, image.getHeight() + 100);
+        } catch (Exception e) {
+        }
     }
     
     /**
