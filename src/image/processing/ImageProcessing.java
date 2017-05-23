@@ -29,6 +29,7 @@ public class ImageProcessing {
         String path = "1.png";
         try {
             image = ImageIO.read(new File(path));
+            UndoImage.addNext(image);
             new MainFrame().setVisible(true);
             
 //            new frmOptions().setVisible(true);
