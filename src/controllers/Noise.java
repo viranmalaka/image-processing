@@ -15,8 +15,6 @@ import java.awt.image.BufferedImage;
 public class Noise {
     public static BufferedImage meanFiltering(BufferedImage b, int[][] kernel) {
         BufferedImage img = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
-//        int[][] kernel = {{1,1,1},{1,2,1},{1,1,1}};
-//        kernel = new int[][]{{1,2,3,2,1},{2,7,11,7,2},{3,11,17,11,3},{2,7,11,7,2},{1,2,3,2,1}};
         int kernelSum = getTotalValue(kernel);
         int margin = kernel.length / 2;
         for (int i = margin; i < b.getWidth() - margin; i++) {
