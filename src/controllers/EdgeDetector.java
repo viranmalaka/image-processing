@@ -34,7 +34,11 @@ public class EdgeDetector {
         return operation(kernel, b, level, color);
     }
 
-    public static BufferedImage robertsOperation(BufferedImage b, int level, boolean  color){
+    public static BufferedImage robertsOperation1(BufferedImage b, int level, boolean  color){
+        int[][] kernel = {{0, 1}, {-1, 0}};
+        return operation(kernel, b, level, color);
+    }
+    public static BufferedImage robertsOperation2(BufferedImage b, int level, boolean  color){
         int[][] kernel = {{1, 0}, {0, -1}};
         return operation(kernel, b, level, color);
     }

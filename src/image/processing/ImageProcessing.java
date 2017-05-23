@@ -26,7 +26,14 @@ public class ImageProcessing {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        String path = "5.jpg";
+        String path;
+        path = "1.png";
+//        path = "2.png";
+//        path = "3.jpg";
+//        path = "4.jpg";
+//        path = "5.jpg";
+//        path = "6.jpg";
+//        path = "7.jpg";
         try {
             image = ImageIO.read(new File(path));
             UndoImage.getCurrent().addNext(image);
