@@ -84,14 +84,6 @@ public class Filter {
         return mean(b, kernel, t);
     }
 
-    public static BufferedImage kClosestAveraging(BufferedImage b, int k){
-        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        
-        
-        
-        return newPic;
-    }
-
     private static int getTotalValue(int[][] k) {
         int s = 0;
         for (int i = 0; i < k.length; i++) {
@@ -102,12 +94,11 @@ public class Filter {
         return s;
     }
 
-    public static BufferedImage medianFiltering(BufferedImage b, int[][] kernel) {
+    public static BufferedImage medianFiltering(BufferedImage b, int margine) {
         BufferedImage img = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        
-        int[] sortedArray = {0,0,0, b.getRGB(0, 0), b.getRGB(1, 0)};
+        margine = 1;
         for (int i = 1; i < b.getHeight()- 1; i++) {
-            
+            int[] sortedArray = {0,0,0, b.getRGB(0, 0), b.getRGB(1, 0), b.getRGB(margine, margine)};
             for (int j = 1; j < b.getWidth()- 1; j++) {
                 
             }
