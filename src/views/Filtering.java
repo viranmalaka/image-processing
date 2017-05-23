@@ -39,7 +39,6 @@ public class Filtering extends javax.swing.JInternalFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
         lblShow = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -55,6 +54,7 @@ public class Filtering extends javax.swing.JInternalFrame {
         });
 
         buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("1");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,14 +83,6 @@ public class Filtering extends javax.swing.JInternalFrame {
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton4ActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(jRadioButton5);
-        jRadioButton5.setText("5");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
             }
         });
 
@@ -128,9 +120,7 @@ public class Filtering extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton5))
+                        .addComponent(jRadioButton4))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(lblShow, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,7 +130,7 @@ public class Filtering extends javax.swing.JInternalFrame {
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
                         .addComponent(txtThreshold, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,8 +142,7 @@ public class Filtering extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5))
+                    .addComponent(jRadioButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblShow, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -173,17 +162,15 @@ public class Filtering extends javax.swing.JInternalFrame {
         BufferedImage meanFilter = null;
         if (jRadioButton1.isSelected()) {
             meanFilter = Filter.meanFilter(UndoImage.getCurrent().getImg(), 1);
-        }else if(jRadioButton2.isSelected()){
+        } else if (jRadioButton2.isSelected()) {
             meanFilter = Filter.meanFilter(UndoImage.getCurrent().getImg(), 2);
-        }else if(jRadioButton3.isSelected()){
+        } else if (jRadioButton3.isSelected()) {
             meanFilter = Filter.meanFilter(UndoImage.getCurrent().getImg(), 3);
-        }else if(jRadioButton4.isSelected()){
-            meanFilter = Filter.meanFilter(UndoImage.getCurrent().getImg(), 4);
-        }else if(jRadioButton5.isSelected()){
+        } else if (jRadioButton4.isSelected()) {
             meanFilter = Filter.meanFilter(UndoImage.getCurrent().getImg(), 4);
         }
         UndoImage.getCurrent().addNext(meanFilter);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -206,11 +193,6 @@ public class Filtering extends javax.swing.JInternalFrame {
         lblShow.setText("<html>1, 2, 3, 2, 1<br>2, 7, 11, 7, 2<br>3, 11, 17, 11, 3<br>2, 7, 11, 7, 2<br>1, 2, 3, 2, 1</html>");
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-        // TODO add your handling code here:
-        lblShow.setText("add here");
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
-
     private void txtThresholdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThresholdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtThresholdActionPerformed
@@ -218,8 +200,20 @@ public class Filtering extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
-            BufferedImage thresholdAveraging = Filter.thresholdAveraging(UndoImage.getCurrent().getImg(), 
-                    Integer.parseInt(txtThreshold.getText()));
+            int parseInt = Integer.parseInt(txtThreshold.getText());
+            if (parseInt < 0 || parseInt > 255) {
+                throw new NumberFormatException();
+            }
+            BufferedImage thresholdAveraging = null;
+            if (jRadioButton1.isSelected()) {
+                thresholdAveraging = Filter.thresholdAveraging(UndoImage.getCurrent().getImg(), 1, parseInt);
+            } else if (jRadioButton2.isSelected()) {
+                thresholdAveraging = Filter.thresholdAveraging(UndoImage.getCurrent().getImg(), 2, parseInt);
+            } else if (jRadioButton3.isSelected()) {
+                thresholdAveraging = Filter.thresholdAveraging(UndoImage.getCurrent().getImg(), 3, parseInt);
+            } else if (jRadioButton4.isSelected()) {
+                thresholdAveraging = Filter.thresholdAveraging(UndoImage.getCurrent().getImg(), 4, parseInt);
+            }
             UndoImage.getCurrent().addNext(thresholdAveraging);
         } catch (NumberFormatException numberFormatException) {
             JOptionPane.showMessageDialog(this, "Error Value");
@@ -237,7 +231,6 @@ public class Filtering extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JLabel lblShow;
     private javax.swing.JTextField txtThreshold;
     // End of variables declaration//GEN-END:variables
