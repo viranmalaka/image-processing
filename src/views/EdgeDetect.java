@@ -48,6 +48,12 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         setResizable(true);
 
         jButton1.setText("Sobel - H");
+        jButton1.setToolTipText("<html>-1, -2, -1<br>0, 0, 0<br>1, 2, 1</html>");
+        jButton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButton1MouseMoved(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -57,6 +63,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         jTextField1.setText("250");
 
         jButton2.setText("Sobel - V");
+        jButton2.setToolTipText("<html>-1, 0, 1<br>-2, 0, 2<br> -1, 0, 1</html>");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -64,6 +71,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         });
 
         jButton3.setText("Prewitt - H");
+        jButton3.setToolTipText("<html>-1, -1 , -1<br>0, 0, 0<br>1, 1, 1</html>");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -71,6 +79,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         });
 
         jButton4.setText("Prewitt - V");
+        jButton4.setToolTipText("<html>-1, 0, 1<br>-1, 0, 1<br>-1, 0, 1</html>");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -78,6 +87,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         });
 
         jButton5.setText("Robert D+");
+        jButton5.setToolTipText("<html>0, 1<br>-1, 0</html>");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -92,6 +102,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         });
 
         jButton6.setText("Robert D-");
+        jButton6.setToolTipText("<html>1, 0<br>0, -1</html>");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -129,16 +140,17 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3)
                         .addComponent(jButton4)
                         .addComponent(jButton5)
                         .addComponent(jButton6))
-                    .addComponent(jCheckBox1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2)
+                        .addComponent(jCheckBox1)))
                 .addGap(18, 18, 18)
                 .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                 .addContainerGap())
@@ -228,6 +240,11 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error level value");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseMoved
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1MouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
