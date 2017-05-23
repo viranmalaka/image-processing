@@ -6,6 +6,7 @@
 package views;
 
 import image.processing.ImageProcessing;
+import image.processing.UndoImage;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
@@ -28,7 +29,7 @@ public class ImageViewer extends javax.swing.JInternalFrame {
     }
 
     public void refreshImage(){
-        BufferedImage image = ImageProcessing.getImage();
+        BufferedImage image = UndoImage.getCurrent().getImg();
         this.image = image;
         this.lblImage.setIcon(new ImageIcon(image));
         this.setSize(image.getWidth(), image.getHeight());
