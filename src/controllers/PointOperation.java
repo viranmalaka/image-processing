@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 /**
@@ -17,7 +18,7 @@ public class PointOperation {
     }
     
     private static BufferedImage rotate(BufferedImage b){
-        BufferedImage newPic = new BufferedImage(b.getHeight(),b.getWidth(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage newPic = new BufferedImage(b.getHeight(),b.getWidth(), BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < b.getHeight(); i++) {
             for (int j = 0; j < b.getWidth(); j++) {
                 newPic.setRGB(newPic.getWidth()-1-i, j, b.getRGB(j, i));
@@ -40,7 +41,7 @@ public class PointOperation {
     }
     
     public static BufferedImage vFlip (BufferedImage b){
-        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < b.getWidth(); i++) {
             for (int j = 0; j < b.getHeight(); j++) {
                 newPic.setRGB(i, j, b.getRGB(i, b.getHeight() - 1 -j));
@@ -50,13 +51,41 @@ public class PointOperation {
         return newPic;
     }
     public static BufferedImage hFlip (BufferedImage b){
-        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < b.getWidth(); i++) {
             for (int j = 0; j < b.getHeight(); j++) {
                 newPic.setRGB(i, j, b.getRGB(b.getWidth() - 1 - i, j));
             }
         }
       
+        return newPic;
+    }
+    
+    public static BufferedImage digitalNegetive(BufferedImage b){
+        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_RGB);
+        for (int i = 0; i < b.getWidth(); i++) {
+            for (int j = 0; j < b.getHeight(); j++) {
+                Color point = new Color(b.getRGB(i, j));
+                newPic.setRGB(i, j, new Color(255 - point.getRed(), 255 - point.getGreen(), 255 - point.getBlue()).getRGB());
+            }
+        }
+        return newPic;
+    }
+    
+    public static BufferedImage squreRoot(BufferedImage b){
+        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_RGB);
+        for (int i = 0; i < b.getWidth(); i++) {
+            for (int j = 0; j < b.getHeight(); j++) {
+                Color point = new Color(b.getRGB(i, j));
+                int red = (int)Math.round(Math.sqrt(point.getRed()))*16;
+                int green = (int)Math.round(Math.sqrt(point.getGreen()))*16;
+                int blue = (int)Math.round(Math.sqrt(point.getBlue()))*16;
+                if(red == 256) red = red -1;
+                if(green == 256) green = green -1;
+                if(blue == 256) blue = blue -1;
+                newPic.setRGB(i, j, new Color(red, green, blue).getRGB());
+            }
+        }
         return newPic;
     }
 }

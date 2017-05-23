@@ -7,6 +7,7 @@ package controllers;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 /**
  *
@@ -54,7 +55,7 @@ public class Staticstic {
     }
     
     
-    public static BufferedImage getHist(BufferedImage img, char c){
+    public static BufferedImage getHist(BufferedImage img, char c, boolean acc){
         int[] count = new int[256];
         for (int i = 0; i < img.getWidth(); i++) {
             for (int j = 0; j < img.getHeight(); j++) {
@@ -81,22 +82,44 @@ public class Staticstic {
         Color blueColor = new Color(0,0,255);
         
         for (int i = 1; i < count.length; i++) {
-            if(maxVal < count[i]) maxVal = count[i];
+            if(acc){
+                maxVal += count[i];
+            }else{
+                if(maxVal < count[i]) maxVal = count[i];
+            }
         }
         double m = 100.0 / maxVal;
         
+        int sum = 0;
         for (int i = 0; i < 256; i++) {
-            for (int j = 0; j < m * count[i]; j++) {
-                switch (c) {
-                    case 'R':
-                        hist.setRGB(i, 100 - j, redColor.getRGB());
-                        break;
-                    case 'G':
-                        hist.setRGB(i, 100 - j, greenColor.getRGB());
-                        break;
-                    case 'B':
-                        hist.setRGB(i, 100 - j, blueColor.getRGB());
-                        break;
+            if (acc) {
+                sum += count[i];
+                for (int j = 0; j < m * sum; j++) {
+                    switch (c) {
+                        case 'R':
+                            hist.setRGB(i, 100 - j, redColor.getRGB());
+                            break;
+                        case 'G':
+                            hist.setRGB(i, 100 - j, greenColor.getRGB());
+                            break;
+                        case 'B':
+                            hist.setRGB(i, 100 - j, blueColor.getRGB());
+                            break;
+                    }
+                }
+            }else{
+                for (int j = 0; j < m * count[i]; j++) {
+                    switch (c) {
+                        case 'R':
+                            hist.setRGB(i, 100 - j, redColor.getRGB());
+                            break;
+                        case 'G':
+                            hist.setRGB(i, 100 - j, greenColor.getRGB());
+                            break;
+                        case 'B':
+                            hist.setRGB(i, 100 - j, blueColor.getRGB());
+                            break;
+                    }
                 }
             }
             

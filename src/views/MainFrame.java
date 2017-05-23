@@ -86,7 +86,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem2.setText("Scaling");
         jMenu2.add(jMenuItem2);
 
-        jMenuItem5.setText("Transporse");
+        jMenuItem5.setText("Point Operation");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -168,7 +168,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        TransposeOptions transposeOptions = new TransposeOptions();
+        PointOperationsView transposeOptions = new PointOperationsView();
         this.desktop.add(transposeOptions);
         transposeOptions.show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
