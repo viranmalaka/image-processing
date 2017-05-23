@@ -26,10 +26,10 @@ public class ImageProcessing {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        String path = "5.jpg";
+        String path = "6.jpg";
         try {
             image = ImageIO.read(new File(path));
-            UndoImage.addNext(image);
+            UndoImage.getCurrent().addNext(image);
             new MainFrame().setVisible(true);
             
 //            new frmOptions().setVisible(true);

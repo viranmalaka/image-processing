@@ -6,18 +6,26 @@
 package image.processing;
 
 import java.awt.image.BufferedImage;
+import javafx.scene.image.ImageView;
+import views.ImageViewer;
 
 /**
  *
  * @author malaka
  */
 public class UndoImage {
-    private static UndoImage current;
+    
+    private static UndoImage current = new UndoImage();
+    
+    public static UndoImage getCurrent() {
+        return current;
+    }
+    
     private BufferedImage img;
     private UndoImage backImage;
     private UndoImage nextImage;
     
-    private static ImageProcessing notifyTo;
+    private static ImageViewer notifyTo;
 
     public BufferedImage getImg() {
         return img;
@@ -56,7 +64,7 @@ public class UndoImage {
         this.nextImage = nextImage;
     }
     
-    public static void addNext(BufferedImage img){
+    public void addNext(BufferedImage img){
         UndoImage n = new UndoImage();
         n.setImg(img);
         if(current != null){
@@ -64,7 +72,7 @@ public class UndoImage {
             n.setBackImage(current);
         }
         current = n;
-        notifyTo.setImage(img);
+        if(notifyTo != null) notifyTo.refreshImage();
     }
     
     public static void undo(){
@@ -85,10 +93,7 @@ public class UndoImage {
         return current.nextImage != null;
     }
 
-    public static UndoImage getCurrent() {
-        return current;
+    public static void setNotifyTo(ImageViewer notifyTo) {
+        UndoImage.notifyTo = notifyTo;
     }
-    
-    
-    
 }

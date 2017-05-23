@@ -29,16 +29,16 @@ public class Histogram extends javax.swing.JInternalFrame {
         lblBlueHisto.setIcon(new ImageIcon(Staticstic.getHist(UndoImage.getCurrent().getImg(),'B')));
         
         double mR = Staticstic.getMean(UndoImage.getCurrent().getImg(), 'R');
-        lblRM.setText("Mean : " + ("" + mR).substring(0,13) );
-        lblRV.setText("Variance : " + ("" + Staticstic.getVar(mR, UndoImage.getCurrent().getImg(), 'R')).substring(0,13) );
+        lblRM.setText("Mean : " + mR );
+        lblRV.setText("Variance : " + Staticstic.getVar(mR, UndoImage.getCurrent().getImg(), 'R'));
         
         double mG = Staticstic.getMean(UndoImage.getCurrent().getImg(), 'G');
-        lblGM.setText("Mean : " + ("" + mG).substring(0,13) );
-        lblGV.setText("Variance : " + ("" + Staticstic.getVar(mG, UndoImage.getCurrent().getImg(), 'G')).substring(0,13) );
+        lblGM.setText("Mean : " + mG);
+        lblGV.setText("Variance : "+ Staticstic.getVar(mG, UndoImage.getCurrent().getImg(), 'G'));
         
         double mB = Staticstic.getMean(UndoImage.getCurrent().getImg(), 'B');
-        lblBM.setText("Mean : " + ("" + mB).substring(0,13) );
-        lblBV.setText("Variance : " + ("" + Staticstic.getVar(mB, UndoImage.getCurrent().getImg(), 'B')).substring(0,13) );
+        lblBM.setText("Mean : " + mB);
+        lblBV.setText("Variance : " +  Staticstic.getVar(mB, UndoImage.getCurrent().getImg(), 'B'));
     }
 
     /**

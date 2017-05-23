@@ -18,9 +18,9 @@ public class PointOperation {
     
     private static BufferedImage rotate(BufferedImage b){
         BufferedImage newPic = new BufferedImage(b.getHeight(),b.getWidth(), BufferedImage.TYPE_INT_ARGB);
-        for (int i = 0; i < newPic.getWidth(); i++) {
-            for (int j = 0; j < newPic.getHeight(); j++) {
-                newPic.setRGB(i, j, b.getRGB(b.getHeight() - j -1, i));
+        for (int i = 0; i < b.getHeight(); i++) {
+            for (int j = 0; j < b.getWidth(); j++) {
+                newPic.setRGB(newPic.getWidth()-1-i, j, b.getRGB(j, i));
             }
         }
         return newPic;
@@ -40,21 +40,23 @@ public class PointOperation {
     }
     
     public static BufferedImage vFlip (BufferedImage b){
-        BufferedImage newPic = new BufferedImage(b.getHeight(),b.getWidth(), BufferedImage.TYPE_INT_ARGB);
-        for (int i = 0; i < newPic.getWidth(); i++) {
-            for (int j = 0; j < newPic.getHeight(); j++) {
-                newPic.setRGB(i, j, b.getRGB(i, b.getHeight() - j - 1));
+        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        for (int i = 0; i < b.getWidth(); i++) {
+            for (int j = 0; j < b.getHeight(); j++) {
+                newPic.setRGB(i, j, b.getRGB(i, b.getHeight() - 1 -j));
             }
         }
+      
         return newPic;
     }
     public static BufferedImage hFlip (BufferedImage b){
-        BufferedImage newPic = new BufferedImage(b.getHeight(),b.getWidth(), BufferedImage.TYPE_INT_ARGB);
-        for (int i = 0; i < newPic.getWidth(); i++) {
-            for (int j = 0; j < newPic.getHeight(); j++) {
-                newPic.setRGB(i, j, b.getRGB(b.getWidth() - i -1, j));
+        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        for (int i = 0; i < b.getWidth(); i++) {
+            for (int j = 0; j < b.getHeight(); j++) {
+                newPic.setRGB(i, j, b.getRGB(b.getWidth() - 1 - i, j));
             }
         }
+      
         return newPic;
     }
 }
