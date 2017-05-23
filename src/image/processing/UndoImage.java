@@ -84,5 +84,11 @@ public class UndoImage {
     public static boolean canRedo(){
         return current.nextImage != null;
     }
+
+    public static UndoImage getCurrent() {
+        return current;
+    }
+    
+    
     
 }
