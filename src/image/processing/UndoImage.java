@@ -40,7 +40,8 @@ public class UndoImage {
      * @return the backImage
      */
     public UndoImage getBackImage() {
-        return backImage;
+        current = backImage;
+        return getCurrent();
     }
 
     /**
@@ -76,8 +77,10 @@ public class UndoImage {
     }
     
     public static void undo(){
-        if(canUndo())
+        if(canUndo()){
             current = current.backImage;
+            if(notifyTo != null) notifyTo.refreshImage();
+        }
     }
     
     public static boolean canUndo(){
@@ -85,8 +88,10 @@ public class UndoImage {
     }
     
     public static void redo(){
-        if(canRedo())
+        if(canRedo()){
             current = current.nextImage;
+            if(notifyTo != null) notifyTo.refreshImage();
+        }
     }
     
     public static boolean canRedo(){
