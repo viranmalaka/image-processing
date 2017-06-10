@@ -27,17 +27,18 @@ public class ImageProcessing {
         // TODO code application logic here
         
         String path;
-//        path = "1.png";
+        path = "1.png";
 //        path = "2.png";
 //        path = "3.jpg";
 //        path = "4.jpg";
-//        path = "5.jpg";
-        path = "6.jpg";
+        path = "5.jpg";
+//        path = "6.jpg";
 //        path = "7.jpg";
 //        path = "8.jpg";
+//        path = "/media/malaka/Media/Photoes/Dream Wallpaper/A Curved Path.jpg";
         try {
             image = ImageIO.read(new File(path));
-            UndoImage.getCurrent().addNext(image);
+            UndoImage.getCurrent().setImg(image);
             new MainFrame().setVisible(true);
             
 //            new frmOptions().setVisible(true);

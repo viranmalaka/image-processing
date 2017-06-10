@@ -40,6 +40,9 @@ public class PointOperationsView extends javax.swing.JInternalFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jButton1.setText("90º Roate");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

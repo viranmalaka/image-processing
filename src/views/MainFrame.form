@@ -65,6 +65,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Scaling"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
@@ -76,7 +79,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Noise"/>
+                <Property name="text" type="java.lang.String" value="Filtering"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
@@ -153,12 +156,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktop" alignment="0" pref="619" max="32767" attributes="0"/>
+          <Component id="desktop" alignment="0" pref="886" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktop" alignment="0" pref="404" max="32767" attributes="0"/>
+          <Component id="desktop" alignment="0" pref="576" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>

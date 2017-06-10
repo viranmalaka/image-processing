@@ -74,16 +74,20 @@ public class PointOperation {
     
     public static BufferedImage squreRoot(BufferedImage b){
         BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_RGB);
+        int[] mappingArray = new int[256];
+        for (int i = 0; i < 256; i++) {
+            int x = (int) Math.round(Math.sqrt(i)) * 16;
+            if (x == 256) x -= 1;
+            mappingArray[i] = x;
+        }
         for (int i = 0; i < b.getWidth(); i++) {
             for (int j = 0; j < b.getHeight(); j++) {
                 Color point = new Color(b.getRGB(i, j));
-                int red = (int)Math.round(Math.sqrt(point.getRed()))*16;
-                int green = (int)Math.round(Math.sqrt(point.getGreen()))*16;
-                int blue = (int)Math.round(Math.sqrt(point.getBlue()))*16;
-                if(red == 256) red = red -1;
-                if(green == 256) green = green -1;
-                if(blue == 256) blue = blue -1;
-                newPic.setRGB(i, j, new Color(red, green, blue).getRGB());
+                newPic.setRGB(i, j, new Color(
+                        mappingArray[point.getRed()], 
+                        mappingArray[point.getGreen()],
+                        mappingArray[point.getBlue()]
+                ).getRGB());
             }
         }
         return newPic;
