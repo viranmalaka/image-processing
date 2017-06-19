@@ -19,6 +19,10 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
+        ImageViewer load = new ImageViewer();
+        this.desktop.add(load);
+        load.show();
     }
 
     /**

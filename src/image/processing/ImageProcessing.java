@@ -31,11 +31,12 @@ public class ImageProcessing {
 //        path = "2.png";
 //        path = "3.jpg";
 //        path = "4.jpg";
-        path = "5.jpg";
+//        path = "5.jpg";
 //        path = "6.jpg";
 //        path = "7.jpg";
 //        path = "8.jpg";
 //        path = "/media/malaka/Media/Photoes/Dream Wallpaper/A Curved Path.jpg";
+//        path = "/home/malaka/Desktop/Image Processing/2015/WP_20160706_14_29_14_Pro.jpg";
         try {
             image = ImageIO.read(new File(path));
             UndoImage.getCurrent().setImg(image);

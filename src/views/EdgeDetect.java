@@ -42,6 +42,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -109,14 +110,17 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton7.setText("jButton7");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,7 +138,13 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,14 +155,15 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
                         .addComponent(jButton3)
                         .addComponent(jButton4)
                         .addComponent(jButton5)
-                        .addComponent(jButton6))
+                        .addComponent(jButton6)
+                        .addComponent(jButton7))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2)
                         .addComponent(jCheckBox1)))
-                .addGap(18, 18, 18)
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -246,6 +257,19 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jButton1MouseMoved
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        int level = 0;
+        try {
+            level = Integer.parseInt(jTextField1.getText());
+            BufferedImage robert = EdgeDetector.lap(UndoImage.getCurrent().getImg(), 
+                    level, jCheckBox1.isSelected());
+            lblImage.setIcon(new ImageIcon(robert));
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(this, "Error level value");
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -254,6 +278,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblImage;

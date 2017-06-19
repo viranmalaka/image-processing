@@ -43,6 +43,11 @@ public class EdgeDetector {
         return operation(kernel, b, level, color);
     }
     
+    public static BufferedImage lap(BufferedImage b, int level, boolean  color){
+        int[][] kernel = {{0, 1, 0}, {1, -4, 1}, {0, 1, 0}};
+        return operation(kernel, b, level, color);
+    }
+    
     public static BufferedImage operation(int[][] kernel, BufferedImage b, int level, boolean color) {
         BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
