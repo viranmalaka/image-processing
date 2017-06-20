@@ -62,8 +62,8 @@ public class Scalling {
         BufferedImage newPic = new BufferedImage(Math.round(img.getWidth() * a), 
                 Math.round(img.getHeight() * b), BufferedImage.TYPE_INT_ARGB);
         
-        for (int i = 0; i < img.getWidth(); i++) {
-            for (int j = 0; j < img.getHeight(); j++) {
+        for (int i = 0; i < newPic.getWidth(); i++) {
+            for (int j = 0; j < newPic.getHeight(); j++) {
                 double x = i / a;
                 double y = j / b;
                 
@@ -73,6 +73,38 @@ public class Scalling {
                 x -= intX;
                 y -= intY;
                 
+                Color c1 = new Color(img.getRGB(intX, intY));
+                
+                
+                Color c2 = intX == newPic.getWidth() - 1 && intY != newPic.getHeight() - 1 ? 
+                        new Color(img.getRGB(intX, intY)) : 
+                        new Color(img.getRGB(intX + 1, intY));
+                 
+                Color c3 = (intY == newPic.getHeight() - 1 && intX != newPic.getWidth() - 1) ? 
+                        new Color(img.getRGB(intX, intY)) : 
+                        new Color(img.getRGB(intX, intY + 1));
+                
+                Color c4 = intX == newPic.getWidth() - 1 && intY == newPic.getHeight() - 1 ?
+                        new Color(img.getRGB(intX, intY)) :
+                        new Color(img.getRGB(intX + 1, intY + 1)) ;
+                
+                
+                int red = (int)Math.round(c1.getRed()*x*y + 
+                        c2.getRed()*(1 - x) * y + 
+                        c3.getRed()*x * (1 - y) + 
+                        c4.getRed()*(1-x) * (1-y));
+                
+                int green = (int)Math.round(c1.getGreen()*x*y + 
+                        c2.getGreen()*(1 - x) * y + 
+                        c3.getGreen()*x * (1 - y) + 
+                        c4.getGreen()*(1-x) * (1-y));
+                
+                int blue = (int)Math.round(c1.getBlue()*x*y + 
+                        c2.getBlue()*(1 - x) * y + 
+                        c3.getBlue()*x * (1 - y) + 
+                        c4.getBlue()*(1-x) * (1-y));
+                
+                newPic.setRGB(i, j, new Color(red, green, blue).getRGB());
 //                double r = ()
             }
         }

@@ -34,24 +34,63 @@ public class ScallingView extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        nn1 = new javax.swing.JButton();
+        bli = new javax.swing.JButton();
+        txta1 = new javax.swing.JTextField();
+        txtb1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txta2 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtb2 = new javax.swing.JTextField();
+        nn2 = new javax.swing.JButton();
 
         jLabel1.setText("Nearest Neighbours Method");
 
         jLabel2.setText("Ratio : ");
 
-        jButton1.setText("Scale");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nn1.setText("Scale");
+        nn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nn1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bli.setText("Scale");
+        bli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bliActionPerformed(evt);
+            }
+        });
+
+        txta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txta1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("a:");
+
+        jLabel4.setText("b:");
+
+        jLabel5.setText("Bi-Linear Interpolation");
+
+        jLabel6.setText("a:");
+
+        txta2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txta2ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("b:");
+
+        nn2.setText("Scale");
+        nn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nn2ActionPerformed(evt);
             }
         });
 
@@ -60,21 +99,46 @@ public class ScallingView extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel2)
+                                .addGap(2, 2, 2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nn1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txta1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addGap(61, 61, 61)
+                                .addComponent(nn2))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel2)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(jButton2)))
-                .addContainerGap(223, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtb1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txta2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7)
+                                .addGap(6, 6, 6)
+                                .addComponent(txtb2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(bli))
+                    .addComponent(jLabel5))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,33 +149,72 @@ public class ScallingView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(87, 87, 87)
-                .addComponent(jButton2)
-                .addContainerGap(189, Short.MAX_VALUE))
+                    .addComponent(nn1))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(txtb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nn2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtb2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(bli))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void nn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nn1ActionPerformed
         // TODO add your handling code here:
         BufferedImage scale1 = Scalling.scale1(UndoImage.getCurrent().getImg(), Integer.parseInt(jSpinner1.getValue().toString()));
         UndoImage.getCurrent().addNext(scale1);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_nn1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bliActionPerformed
         // TODO add your handling code here:
-        BufferedImage scale1 = Scalling.bipolarInterpolation(UndoImage.getCurrent().getImg(), (float)2.2, (float)2.2);
-        UndoImage.getCurrent().addNext(scale1);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        BufferedImage bli = Scalling.bipolarInterpolation(UndoImage.getCurrent().getImg(),
+                Float.parseFloat(txta2.getText()), Float.parseFloat(txtb2.getText()));
+        UndoImage.getCurrent().addNext(bli);
+    }//GEN-LAST:event_bliActionPerformed
+
+    private void txta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txta1ActionPerformed
+
+    private void txta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txta2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txta2ActionPerformed
+
+    private void nn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nn2ActionPerformed
+        // TODO add your handling code here:
+        BufferedImage scale2 = Scalling.scale2(UndoImage.getCurrent().getImg(), Integer.parseInt(txta1.getText()), Integer.parseInt(txtb1.getText()));
+        UndoImage.getCurrent().addNext(scale2);
+    }//GEN-LAST:event_nn2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JButton nn1;
+    private javax.swing.JButton nn2;
+    private javax.swing.JTextField txta1;
+    private javax.swing.JTextField txta2;
+    private javax.swing.JTextField txtb1;
+    private javax.swing.JTextField txtb2;
     // End of variables declaration//GEN-END:variables
 }
