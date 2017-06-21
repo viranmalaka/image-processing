@@ -50,6 +50,7 @@ public class PointOperation {
       
         return newPic;
     }
+    
     public static BufferedImage hFlip (BufferedImage b){
         BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < b.getWidth(); i++) {
@@ -88,6 +89,19 @@ public class PointOperation {
                         mappingArray[point.getGreen()],
                         mappingArray[point.getBlue()]
                 ).getRGB());
+            }
+        }
+        return newPic;
+    }
+    
+    public static BufferedImage grayScale(BufferedImage b){
+        BufferedImage newPic = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_RGB);
+        for (int i = 0; i < b.getWidth(); i++) {
+            for (int j = 0; j < b.getHeight(); j++) {
+                Color color = new Color(b.getRGB(i, j));
+                int x = color.getRed() + color.getGreen() + color.getBlue();
+                
+                newPic.setRGB(i, j, new Color(x/3, x/3, x/3).getRGB());
             }
         }
         return newPic;
