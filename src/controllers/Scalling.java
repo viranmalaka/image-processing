@@ -61,7 +61,8 @@ public class Scalling {
 //        img = getRedImg(img.getWidth(), img.getHeight());
         BufferedImage newPic = new BufferedImage(Math.round(img.getWidth() * a), 
                 Math.round(img.getHeight() * b), BufferedImage.TYPE_INT_ARGB);
-        
+        System.out.println(newPic.getWidth() + " " + newPic.getHeight());
+        System.out.println((newPic.getWidth()-1)*a + ", " + (newPic.getHeight()-1)*b);
         for (int i = 0; i < newPic.getWidth(); i++) {
             for (int j = 0; j < newPic.getHeight(); j++) {
                 double x = i / a;
@@ -75,16 +76,16 @@ public class Scalling {
                 
                 Color c1 = new Color(img.getRGB(intX, intY));
                 
-                
-                Color c2 = intX == newPic.getWidth() - 1 && intY != newPic.getHeight() - 1 ? 
+//                System.out.println(intX + " = " + newPic.getWidth() + ", " + intY + " = " + newPic.getHeight());
+                Color c2 = intX == img.getWidth() - 1 && intY != img.getHeight() - 1 ? 
                         new Color(img.getRGB(intX, intY)) : 
                         new Color(img.getRGB(intX + 1, intY));
                  
-                Color c3 = (intY == newPic.getHeight() - 1 && intX != newPic.getWidth() - 1) ? 
+                Color c3 = (intY == img.getHeight() - 1 && intX != img.getWidth() - 1) ? 
                         new Color(img.getRGB(intX, intY)) : 
                         new Color(img.getRGB(intX, intY + 1));
                 
-                Color c4 = intX == newPic.getWidth() - 1 && intY == newPic.getHeight() - 1 ?
+                Color c4 = intX == img.getWidth() - 1 && intY == img.getHeight() - 1 ?
                         new Color(img.getRGB(intX, intY)) :
                         new Color(img.getRGB(intX + 1, intY + 1)) ;
                 
