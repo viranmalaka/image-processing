@@ -8,6 +8,7 @@ package views;
 import controllers.Scalling;
 import image.processing.UndoImage;
 import java.awt.image.BufferedImage;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,6 +47,8 @@ public class ScallingView extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txtb2 = new javax.swing.JTextField();
         nn2 = new javax.swing.JButton();
+
+        setClosable(true);
 
         jLabel1.setText("Nearest Neighbours Method");
 
@@ -111,17 +114,16 @@ public class ScallingView extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nn1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txta1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)
-                                .addGap(61, 61, 61)
-                                .addComponent(nn2))))
+                                .addComponent(jLabel4))
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -173,16 +175,30 @@ public class ScallingView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nn1ActionPerformed
-        // TODO add your handling code here:
-        BufferedImage scale1 = Scalling.scale1(UndoImage.getCurrent().getImg(), Integer.parseInt(jSpinner1.getValue().toString()));
-        UndoImage.getCurrent().addNext(scale1);
+        try {
+            final int parseInt = Integer.parseInt(jSpinner1.getValue().toString());
+            if(parseInt == 0){
+                throw new NumberFormatException("Zero is not valid");
+            }
+            BufferedImage scale1 = Scalling.scale1(UndoImage.getCurrent().getImg(), parseInt);
+            UndoImage.getCurrent().addNext(scale1);
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(this, "Error in Number");
+        }
     }//GEN-LAST:event_nn1ActionPerformed
 
     private void bliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bliActionPerformed
-        // TODO add your handling code here:
-        BufferedImage bli = Scalling.bipolarInterpolation(UndoImage.getCurrent().getImg(),
-                Float.parseFloat(txta2.getText()), Float.parseFloat(txtb2.getText()));
-        UndoImage.getCurrent().addNext(bli);
+        try {
+            final float parseFloat1 = Float.parseFloat(txta2.getText());
+            final float parseFloat2 = Float.parseFloat(txtb2.getText());
+            if(parseFloat1 == 0 || parseFloat2 == 0){
+                throw new NumberFormatException();
+            }
+            BufferedImage bli = Scalling.bipolarInterpolation(UndoImage.getCurrent().getImg(), parseFloat1, parseFloat2);
+            UndoImage.getCurrent().addNext(bli);
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(this, "Error in Number");
+        }
     }//GEN-LAST:event_bliActionPerformed
 
     private void txta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txta1ActionPerformed
@@ -194,9 +210,19 @@ public class ScallingView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txta2ActionPerformed
 
     private void nn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nn2ActionPerformed
-        // TODO add your handling code here:
-        BufferedImage scale2 = Scalling.scale2(UndoImage.getCurrent().getImg(), Integer.parseInt(txta1.getText()), Integer.parseInt(txtb1.getText()));
-        UndoImage.getCurrent().addNext(scale2);
+        try {
+            final int parseInt1 = Integer.parseInt(txta1.getText());
+            final int parseInt2 = Integer.parseInt(txtb1.getText());
+            
+            if(parseInt1 <= 0 || parseInt1 <= 0 ){
+                throw new NumberFormatException();
+            }
+            
+            BufferedImage scale2 = Scalling.scale2(UndoImage.getCurrent().getImg(), parseInt1, parseInt2);
+            UndoImage.getCurrent().addNext(scale2);
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(this, "Error in number");
+        }
     }//GEN-LAST:event_nn2ActionPerformed
 
 

@@ -45,7 +45,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
         jButton7 = new javax.swing.JButton();
 
         setClosable(true);
-        setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
 
         jButton1.setText("Sobel - H");
@@ -61,7 +61,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField1.setText("250");
+        jTextField1.setText("25");
 
         jButton2.setText("Sobel - V");
         jButton2.setToolTipText("<html>-1, 0, 1<br>-2, 0, 2<br> -1, 0, 1</html>");
@@ -110,7 +110,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton7.setText("jButton7");
+        jButton7.setText("Laplace");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -140,7 +140,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -162,8 +162,8 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2)
                         .addComponent(jCheckBox1)))
-                .addGap(38, 38, 38)
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -185,7 +185,7 @@ public class EdgeDetect extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         int level = 0;
+        int level = 0;
         try {
             level = Integer.parseInt(jTextField1.getText());
             BufferedImage sobelOperation = EdgeDetector.sobelVOperation(UndoImage.getCurrent().getImg(), 

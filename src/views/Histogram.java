@@ -71,8 +71,7 @@ public class Histogram extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setIconifiable(true);
-        setResizable(true);
+        setClosable(true);
 
         jLabel1.setText("RED");
 

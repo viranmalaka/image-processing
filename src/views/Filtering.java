@@ -21,6 +21,7 @@ public class Filtering extends javax.swing.JInternalFrame {
      */
     public Filtering() {
         initComponents();
+        lblShow.setText("<html>1, 2, 1<br>2, 4, 2<br>1, 2, 1</html>");
     }
 
     /**
@@ -43,6 +44,8 @@ public class Filtering extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         txtThreshold = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+
+        setClosable(true);
 
         jLabel1.setText("Mean Filtering");
 
@@ -228,7 +231,8 @@ public class Filtering extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Filter.medianFiltering(UndoImage.getCurrent().getImg(), 1);
+        BufferedImage medianFiltering = Filter.medianFiltering(UndoImage.getCurrent().getImg());
+        UndoImage.getCurrent().addNext(medianFiltering);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
