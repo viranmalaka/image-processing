@@ -8,6 +8,7 @@ package views;
 import image.processing.UndoImage;
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -50,6 +51,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
 //        System.out.println(Arrays.toString(javax.swing.UIManager.getInstalledLookAndFeels()));
         chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
         chooser.setFileFilter(new FileNameExtensionFilter("PNG", "JPG", "JPEG"));
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
     }
